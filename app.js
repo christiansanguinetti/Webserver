@@ -1,6 +1,9 @@
+require('dotenv').config();
 const express = require('express')
 const app = express()
 const hbs = require('hbs');
+const port = process.env.PORT;
+
 
 //handl
 app.set('view engine', 'hbs');
@@ -18,16 +21,18 @@ app.get('/', (req, res) => {
     titulo: 'Curso Node'
   });
 });
-app.get('/public/back/templatrte/generic.html', (req, res) => {
+app.get('/generic', (req, res) => {
   res.render('generic',{
     Nombre: 'Christian Sanguinetti',
     titulo: 'Curso Node'
   });
 });
-app.get('/public/back/templatrte/elements.html', (req, res) => {
+app.get('/elements', (req, res) => {
   res.render('elements',{
     Nombre: 'Christian Sanguinetti',
     titulo: 'Curso Node'
   });
 });
-app.listen(8080)
+app.listen(port, () =>{
+  console.log(`Example app Listening at http://localhost${port}`)
+})
